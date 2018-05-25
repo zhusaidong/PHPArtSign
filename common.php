@@ -1,4 +1,5 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
 /**
 * 获取字体列表
 * @param string $file 文件路径

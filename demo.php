@@ -1,5 +1,4 @@
 <?php
-header("Content-type: text/html; charset=utf-8");
 require_once("./common.php");
 $savePath         = './DownLoadFont/';
 $saveFontListFile = './FontList.txt';
