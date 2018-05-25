@@ -1,8 +1,6 @@
 <?php
-require_once("./common.php");
-$savePath         = './DownLoadFont/';
-$saveFontListFile = './FontList.txt';
-$fontList         = GetFontListArray($saveFontListFile,$savePath);
+require_once("config.php");
+$optionHtml = $artSign->getFontOption($artSign->getFontLists());
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
@@ -26,19 +24,14 @@ $fontList         = GetFontListArray($saveFontListFile,$savePath);
 			<h3>
 				html版PHPArtSign demo
 			</h3>
-			<form action="./html.php">
+			<form action="html.php">
 				<label for="">
 					字体库:
 					<select name="font">
 						<option value="">
 							选择字体库
 						</option>
-						<?php
-						foreach($fontList as $key =>$value):?>
-						<option value="<?=$key?>">
-							<?=$key?>
-						</option>
-						<?php endforeach;?>
+						<?php echo $optionHtml;?>
 					</select>
 				</label>
 				<label for="">
@@ -54,19 +47,14 @@ $fontList         = GetFontListArray($saveFontListFile,$savePath);
 			<h3>
 				image版PHPArtSign demo
 			</h3>
-			<form action="./image.php">
+			<form action="image.php">
 				<label for="">
 					字体库:
 					<select name="font">
 						<option value="">
 							选择字体库
 						</option>
-						<?php
-						foreach($fontList as $key =>$value):?>
-						<option value="<?=$key?>">
-							<?=$key?>
-						</option>
-						<?php endforeach;?>
+						<?php echo $optionHtml;?>
 					</select>
 				</label>
 				<label for="">
@@ -79,7 +67,7 @@ $fontList         = GetFontListArray($saveFontListFile,$savePath);
 			</form>
 		</div>
 		<div>
-			<a href="./list.php">
+			<a href="list.php">
 				点击查看字体效果列表
 			</a>
 		</div>

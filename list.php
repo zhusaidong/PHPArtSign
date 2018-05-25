@@ -1,36 +1,38 @@
 <?php
-require_once("./common.php");
+require_once("config.php");
+$fontList = $artSign->getFontLists();
 
-$savePath         = './DownLoadFont/';
-$saveFontListFile = './FontList.txt';
-$fontList         = GetFontListArray($saveFontListFile,$savePath);
+$baseUrl = $artSign->getBaseUrl();
 
-$baseUrl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].dirname($_SERVER["REQUEST_URI"]).'/';
-
-echo '<table border="1" cellspacing="0">';
-echo '<tr>';
-echo '<td>';
-echo '字体名称';
-echo '</td>';
-echo '<td>';
-echo 'image版';
-echo '</td>';
-echo '<td>';
-echo 'html版';
-echo '</td>';
-echo '</tr>';
+echo '
+<table border="1" cellspacing="0">
+	<tr>
+		<td>
+			字体名称
+		</td>
+		<td>
+			image版
+		</td>
+		<td>
+			html版
+		</td>
+	</tr>
+	';
 foreach($fontList as $key => $value)
 {
-	echo '<tr>';
-	echo '<td>';
-	echo $key;
-	echo '</td>';
-	echo '<td>';
-	echo '<img src="image.php?name='.str_replace('字体','',$key).'&font='.$key.'"/>';
-	echo '</td>';
-	echo '<td>';
-	echo GetData($baseUrl.'/html.php?name='.str_replace('字体','',$key).'&font='.$key);
-	echo '</td>';
-	echo '</tr>';
+	$get = 'name='.str_replace('字体','',$key).'&font='.$key;
+	echo '
+	<tr>
+		<td>
+			'.$key.'
+		</td>
+		<td>
+			<img src="image.php?'.$get.'"/>
+		</td>
+		<td>
+			'.file_get_contents($baseUrl.'/html.php?'.$get).'
+		</td>
+	</tr>
+	';
 }
 echo '</table>';

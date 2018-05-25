@@ -1,17 +1,10 @@
 <?php
-require_once("./common.php");
+$name = isset($_GET['name']) ? $_GET['name'] : '姓名';
+$font = isset($_GET['font']) ? $_GET['font'] : '签名艺术字体';
 
-$name = '姓名';
-if(isset($_GET['name']))
-$name = $_GET['name'];
+require_once("config.php");
+$fontList = $artSign->getFontLists();
 
-$font = '签名艺术字体';
-if(isset($_GET['font']))
-$font = $_GET['font'];
-
-$savePath        = './DownLoadFont/';
-$saveFontListFile= './FontList.txt';
-$fontList = GetFontListArray($saveFontListFile,$savePath);
 if(isset($fontList[$font]))
 {
 	echo
