@@ -15,3 +15,7 @@
 > 复制DownLoadFont文件夹里的FontList.txt到根目录
 
 ### 运行 demo.php
+
+### 预览
+
+![screenshot](https://raw.githubusercontent.com/zhusaidong/PHPArtSign/master/screenshot/screenshot3.png)
